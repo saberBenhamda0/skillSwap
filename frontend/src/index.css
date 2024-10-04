@@ -1,0 +1,11 @@
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300..800;1,300..800&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+
+.tooltip {
+    @apply absolute p-2 text-white bg-blue-500 border border-white rounded-lg opacity-75;
+    display: none; /* Hide by default */
+  }
