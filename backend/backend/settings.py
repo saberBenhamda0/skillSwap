@@ -24,9 +24,9 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = 'django-insecure-ni6o=sf((m8u!esw+37u10)e-40xa0-e-1&bakk6#525vp^uid'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['*']
 
 
 # Application definition
@@ -47,6 +47,7 @@ INSTALLED_APPS = [
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
+    "whitenoise.middleware.WhiteNoiseMiddleware",
     'django.contrib.sessions.middleware.SessionMiddleware',
     'corsheaders.middleware.CorsMiddleware',
     'django.middleware.common.CommonMiddleware',
@@ -122,7 +123,14 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/5.0/howto/static-files/
 
-STATIC_URL = 'static/'
+# STATIS ROOT FOR ADMIN PANEL CS AND JS 
+STATIC_URL = '/static/'
+STATIC_ROOT = os.path.normpath(os.path.join(BASE_DIR, 'staticfiles'))
+STATICFILES_DIRS = (
+    os.path.join(BASE_DIR, 'static'),
+)
+
+STATICFILES_STORAGE = "whitenoise.storage.CompressedManifestStaticFilesStorage"
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/5.0/ref/settings/#default-auto-field
@@ -145,18 +153,18 @@ REST_FRAMEWORK = {
     'DEFAULT_THROTTLE_CLASSES': [
         'rest_framework.throttling.AnonRateThrottle',
         'rest_framework.throttling.UserRateThrottle',
-        'api.throttles.SignUpAndLoginThrottle',  # Custom throttle class
     ],
     'DEFAULT_THROTTLE_RATES': {
         'anon': '100/day',  # 100 requests per day for anonymous users
-        'user': '1000/day',  # 1000 requests per day for authenticated users
-        'SignUpAndLogin': '10/hour',  # 10 requests per hour for custom throttle
+        'user': '10000/day',  # 10000 requests per day for authenticated users
+        'SignUpAndLogin': '10/min',  # 10 requests per hour for custom throttle
     }
 }
 
 
 CORS_ALLOWED_ORIGINS = [
-    'http://localhost:5173',
+    'http://localhost:8080',
+    'http://127.0.0.1:8080'
 ]
 
 # simple jwt configuration from the official docs
@@ -207,7 +215,7 @@ SIMPLE_JWT = {
 
 
 # Actual directory user files go to
-MEDIA_ROOT = os.path.join(os.path.dirname(BASE_DIR), 'mediafiles')
+MEDIA_ROOT = os.path.join(os.path.dirname(BASE_DIR), 'media')
 
 # URL used to access the media
 MEDIA_URL = '/media/'

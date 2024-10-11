@@ -34,6 +34,9 @@ from django.core.exceptions import ObjectDoesNotExist
 from rest_framework_simplejwt.tokens import RefreshToken, AccessToken
 from django.db.models import F
 
+
+
+
 class RegisterView(APIView):
     http_method_names = ['post']
 
@@ -50,28 +53,33 @@ class MyTokenObtainPairView(TokenObtainPairView):
     serializer_class = MyTokenObtainPairSerializer
 
 @permission_classes([IsAuthenticated])
+@throttle_classes([UserRateThrottle])
 class PostListView(generics.ListCreateAPIView): # create a post list posts
     queryset = Post.objects.all()
     serializer_class = PostSerializer
 
 @permission_classes([IsAuthenticated])
+@throttle_classes([UserRateThrottle])
 class PostDetail(generics.RetrieveUpdateDestroyAPIView):
     queryset = Post.objects.all()
     serializer_class = PostSerializer
 
 @api_view(["GET"])
+@throttle_classes([UserRateThrottle])
 def getChartData(request):
     user = request.user
     chart_data = ChartData.objects.filter(user=user).order_by("-month")
     serializer = ChartDataSerializer(chart_data, many=True)
     return Response(serializer.data)
+
+@throttle_classes([UserRateThrottle])
 @permission_classes([IsAuthenticated])
 class RequestDetail(generics.ListCreateAPIView):
     queryset = Friend_request.objects.all()
     serializer_class = friend_requestSerializer
 
-#-------------------------------------------------------------------------------------------------------------------------------------
 @permission_classes([IsAuthenticated])
+@throttle_classes([UserRateThrottle])
 @api_view(['POST'])
 def acceptFriendRequest(request):
     user = request.user
@@ -94,10 +102,8 @@ def acceptFriendRequest(request):
         return Response({"response" : "request has been rejected with success"})
 
 
-#-------------------------------------------------------------------------------------------------------------------------------------
-
-
 @permission_classes([IsAuthenticated])
+@throttle_classes([UserRateThrottle])
 @api_view(['POST'])
 def delete_friend(request):
     user = request.user
@@ -113,6 +119,7 @@ def delete_friend(request):
         return Response({"error": "Friend relationship not found"}, status=404)
 
 @permission_classes([IsAuthenticated])
+@throttle_classes([UserRateThrottle])
 @api_view(['GET'])
 def FriendsListView(request):
     user = request.user
@@ -121,9 +128,9 @@ def FriendsListView(request):
     friends_list = [friend.friends_id for friend in friends]
     serializer = UserSerializer(friends_list, many=True)
     return Response(serializer.data)
-#-------------------------------------------------------------------------------------------------------------------------------------
-@throttle_classes([SignUpAndLoginThrottle])
+
 @api_view(['POST'])
+@throttle_classes([SignUpAndLoginThrottle])
 def check_email_is_valid(request):
     email = request.data.get("email")
     password = request.data.get("password")
@@ -137,7 +144,7 @@ def check_email_is_valid(request):
             return Response({"response": "This email is taken, please try another one",}, status=HTTP_400_BAD_REQUEST)
     except ObjectDoesNotExist:
         # Create a new user if the email doesn't exist
-        created_user = get_user_model().objects.create_user(email=email, username=username,password=password)
+        created_user = get_user_model().objects.create_user(email=email, username=username, password=password)
         refresh = RefreshToken.for_user(user=created_user)
         access = AccessToken.for_user(user=created_user)
         return Response({"response": "The email is valid and user was created",
@@ -149,6 +156,7 @@ def check_email_is_valid(request):
     return Response({"response": "Something went wrong, please try again later"}, status=HTTP_404_NOT_FOUND)
 
 @permission_classes([IsAuthenticated])
+@throttle_classes([UserRateThrottle])
 @api_view(['POST'])
 def sendRequest(request): # this is for sending a friend request
     user = request.user
@@ -171,7 +179,7 @@ def sendRequest(request): # this is for sending a friend request
     return Response({"response" : "heello some probkeme happend with status"})
 
 
-#-------------------------------------------------------------------------------------------------------------------------------------
+@throttle_classes([UserRateThrottle])
 @permission_classes([IsAuthenticated])
 @api_view(['GET'])
 def getRequestForUser(request): # get specefic request for a specefic user
@@ -193,6 +201,7 @@ def getRequestForUser(request): # get specefic request for a specefic user
         }
 )
 
+@throttle_classes([UserRateThrottle])
 @permission_classes([IsAuthenticated])
 @api_view(['POST'])
 def upload(request):
@@ -205,8 +214,8 @@ def upload(request):
     product = Post.objects.create(Post_image=file, user_id = user.id)
 
     return Response({"response": "success"})
-#-------------------------------------------------------------------------------------------------------------------------------------
 
+@throttle_classes([UserRateThrottle])
 @permission_classes([IsAuthenticated])
 @api_view(['POST'])
 def logout(request):
@@ -219,8 +228,7 @@ def logout(request):
     except Exception as e:
         return Response(status=status.HTTP_400_BAD_REQUEST)
 
-#-------------------------------------------------------------------------------------------------------------------------------------
-
+@throttle_classes([UserRateThrottle])
 @permission_classes([IsAuthenticated])
 @api_view(['GET'])
 def get_user_info(request):
@@ -231,6 +239,8 @@ def get_user_info(request):
     except get_user_model().DoesNotExist:
         return Response({"error": "User does not exist"}, status=status.HTTP_404_NOT_FOUND)
 
+
+@throttle_classes([UserRateThrottle])
 @api_view(['GET'])
 def get_some_user_info(request, pk):
     try:
@@ -240,6 +250,7 @@ def get_some_user_info(request, pk):
         return Response(serializer.data)
     except get_user_model().DoesNotExist:
         return Response({"error": "User does not exist"}, status=status.HTTP_404_NOT_FOUND)
+
 
 @permission_classes([IsAuthenticated])
 @api_view(['POST'])
@@ -274,6 +285,7 @@ def add_info_for_user(request):
         return Response({"error": "User not found"}, status=status.HTTP_404_NOT_FOUND)
 
 @permission_classes([IsAuthenticated])
+@throttle_classes([UserRateThrottle])
 @api_view(['GET'])
 def get_post(request, pk):
     user = request.user

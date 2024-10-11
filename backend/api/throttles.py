@@ -4,7 +4,7 @@ from rest_framework.throttling import SimpleRateThrottle
 
 class SignUpAndLoginThrottle(SimpleRateThrottle):
     # Define the scope for this throttle class
-    scope = ' SignUpAndLogin'
+    scope = 'SignUpAndLogin'
 
     def get_cache_key(self, request, view):
         if request.user.is_authenticated:

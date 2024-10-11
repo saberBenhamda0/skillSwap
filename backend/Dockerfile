@@ -10,8 +10,9 @@ WORKDIR /backend
 
 RUN pip install -r requirements.txt
 
-EXPOSE 8080
+RUN python manage.py collectstatic --noinput
 
-ENTRYPOINT [ "python", "manage.py"]
+EXPOSE 8000
 
-CMD ["runserver", "0.0.0.0:8080"]
+# Start the Django application using Gunicorn
+CMD ["gunicorn", "-c", "gunicorn_config.py", "backend.wsgi:application"]

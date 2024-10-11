@@ -1,0 +1,15 @@
+version: '27.0.3'
+services:
+  django:
+    image: drf:08
+    volumes:
+      - sqlite_data:/backend  # Mount the database file to persist
+      - static_volume:/backend/static_volume # here we mount the static_volume here
+      - media:/media
+    ports:
+      - "8000:8000"
+    restart: always
+volumes:
+  sqlite_data:  # Named volume for SQLite database persistence
+  static_volume:
+  media:
