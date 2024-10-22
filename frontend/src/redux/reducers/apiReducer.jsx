@@ -2,10 +2,10 @@ import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react';
 
 // Define a base query function that will set headers dynamically
 const baseQuery = fetchBaseQuery({
-    baseUrl: 'http://127.0.0.1:8000/api/',
-    prepareHeaders: (headers, { getState }) => {
-        const state = getState(); // Access the entire state
-        const token = state.auth.access; // Access the token from the state
+    baseUrl: 'http://144.126.228.197:8000/api/',
+    prepareHeaders: (headers) => {
+        /*const state = getState(); // Access the entire state*/
+        const token = localStorage.getItem("access"); // Access the token from the state
 
         if (token) {
             headers.set('Authorization', `Bearer ${token}`);

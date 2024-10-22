@@ -16,11 +16,13 @@ const Navbar =  ()  => {
   let dispatch = useDispatch()
   const navigate = useNavigate()
 
-  let { access, refresh } = useSelector((state)=> state.auth);
+  let { access: access_token, refresh: refresh_token} = useSelector((state)=> state.auth);
+  
+  localStorage.setItem("access", access_token);
+  localStorage.setItem("refresh", refresh_token);
 
-
-  let ACCESS_TOKEN = access
-
+  let ACCESS_TOKEN = localStorage.getItem("access")
+  let refresh = localStorage.getItem("refresh")
 
   let [sendRefreshToken, { data,isLoading, error }] = useSendRefreshTokenMutation()
   let [sendLogoutRequest, {logoutResponseData}] = useSendLogoutRequestMutation()

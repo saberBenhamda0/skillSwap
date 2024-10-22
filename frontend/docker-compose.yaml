@@ -1,7 +1,7 @@
 version: '27.0.3'
 services:
   website:
-    image: image:09
+    image: images:14
     ports:
       - "8080:80"
     restart: always

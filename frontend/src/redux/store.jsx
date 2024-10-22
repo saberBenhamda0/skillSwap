@@ -4,7 +4,6 @@ import postsReducer from "./reducers/postsReducer"; // Ensure this reducer is co
 import authReducer from "./reducers/authReducer";
 import storage from 'redux-persist/lib/storage'
 import userInfoReducer from "./reducers/userInfoReducer";
-
 import { persistStore, persistReducer } from "redux-persist";
 
 const persistConfig = {

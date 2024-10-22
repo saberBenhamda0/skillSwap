@@ -34,7 +34,6 @@ const Profile = () => {
     }, [users?.data]);
 
     const HandleAccept = async (request_id) => {
-        console.log(request_id);
         let data = {
             "request_id": request_id,
             "status": 2
@@ -46,7 +45,6 @@ const Profile = () => {
     };
 
     const HandleReject = async (request_id) => {
-        console.log(request_id);
         let data = {
             "request_id": request_id,
             "status": 3

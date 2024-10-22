@@ -19,6 +19,9 @@ RUN npm run build
 # Use a smaller image for running the application.
 FROM nginx:alpine
 
+
+COPY ./nginx.conf /etc/nginx/conf.d/default.conf
+
 # Copy the built application from the build stage.
 COPY --from=build /usr/src/app/dist /usr/share/nginx/html
 
