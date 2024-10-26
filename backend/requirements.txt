@@ -5,3 +5,4 @@ django-cors-headers==4.4.0
 pillow
 gunicorn
 whitenoise
+django-environ

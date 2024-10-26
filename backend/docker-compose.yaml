@@ -1,11 +1,13 @@
 version: '27.0.3'
 services:
   django:
-    image: drf:08
+    image: backend:01
     volumes:
       - sqlite_data:/backend  # Mount the database file to persist
       - static_volume:/backend/static_volume # here we mount the static_volume here
       - media:/media
+      - .:/backend            # This mounts the current directory to /backend in the container
+    working_dir: /backend      # Sets the working directory in the container to /backend
     ports:
       - "8000:8000"
     restart: always
