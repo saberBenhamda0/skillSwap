@@ -5,7 +5,7 @@ services:
     volumes:
       - sqlite_data:/backend  # Mount the database file to persist
       - static_volume:/backend/static_volume # here we mount the static_volume here
-      - media:/media
+      - media:/backend/media
       - .:/backend            # This mounts the current directory to /backend in the container
     working_dir: /backend      # Sets the working directory in the container to /backend
     ports:
