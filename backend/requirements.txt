@@ -6,3 +6,5 @@ pillow
 gunicorn
 whitenoise
 django-environ
+django-storages==1.13.2
+boto3==1.26.59
