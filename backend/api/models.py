@@ -78,7 +78,7 @@ class Post(models.Model):
     type = models.CharField(blank=True,null=True, max_length=50)
     pastCollaboration = models.IntegerField(default=0)
     price = models.IntegerField(default=0)
-    Post_image = models.ImageField(blank=False,default="How-to-Setup-ReactJS-with-Django_Jf3oK5G.png",null=False)
+    Post_image = models.ImageField(blank=False,default="How-to-Setup-ReactJS-with-Django_Jf3oK5G.png",null=False, upload_to='media/')
     User_image = models.ImageField(blank=False,default="How-to-Setup-ReactJS-with-Django_Jf3oK5G.png",null=False)
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
