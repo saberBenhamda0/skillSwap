@@ -92,6 +92,9 @@ DATABASES = {
     }
 }
 
+DEFAULT_FILE_STORAGE = "storages.backends.s3boto3.S3Boto3Storage"
+
+
 
 # Password validation
 # https://docs.djangoproject.com/en/5.0/ref/settings/#auth-password-validators
@@ -222,6 +225,7 @@ STATIC_URL = '/static/'
 STATIC_ROOT = os.path.normpath(os.path.join(BASE_DIR, 'staticfiles'))
 
 
+MEDIAFILES_LOCATION = 'media'
 
 # aws settings
 AWS_ACCESS_KEY_ID = env('AWS_ACCESS_KEY_ID')
@@ -233,7 +237,6 @@ AWS_S3_OBJECT_PARAMETERS = {'CacheControl': 'max-age=86400'}
 AWS_LOCATION = 'static'
 MEDIA_URL = f'https://{AWS_S3_CUSTOM_DOMAIN}/media/'
 AWS_S3_SIGNATURE_VERSION = "s3v4"
-DEFAULT_FILE_STORAGE = "storages.backends.s3boto3.S3Boto3Storage"
 STATICFILES_STORAGE = "storages.backends.s3boto3.S3Boto3Storage"
 
 
