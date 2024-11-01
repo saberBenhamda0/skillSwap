@@ -65,7 +65,7 @@ const Profile = () => {
                     <div className='flex flex-col items-start justify-start w-full h-full mr-8 lg:mt-12 lg:justify-between lg:flex-row'>
                         <div className='flex flex-row w-11/12 mt-6 bg-white shadow-md lg:mt-0 lg:ml-16 lg:w-6/12 rounded-xl h-5/6 lg:h-3/6'>
                                 <div className='flex flex-col items-center justify-center w-5/12 h-full '>
-                                    <img src={`http://127.0.0.1:8000/${userInfo?.User_image}`} className='h-40 rounded-full lg:w-40' />
+                                    <img src={`${userInfo?.User_image}`} className='h-40 rounded-full lg:w-40' />
                                 </div>
                                 <div className='flex flex-col items-start w-7/12 h-full'>
                                     <h2 className='w-full my-4 ml-4 text-2xl font-bold break-all font-body'>{userInfo?.username}</h2>
@@ -88,7 +88,7 @@ const Profile = () => {
                                         visibility[index] && (
                                             <div key={users.request_id[index]} className='flex flex-row justify-between align-middle items-center border-x-2 border-t-2 border-[#EFEFF4]'>
                                                 <div className='flex flex-row items-center align-middle'>
-                                                    <img className='mx-4 w-[30px] h-[30px]' src={`http://127.0.0.1:8000${user.User_image}`} alt='User' />
+                                                    <img className='mx-4 w-[30px] h-[30px]' src={`${user.User_image}`} alt='User' />
                                                     <h2 onClick={() => navigate(`/profile/${user.id}`)} className='my-4 ml-2 text-xl font-bold cursor-pointer font-body'>
                                                         {user.username}
                                                     </h2>

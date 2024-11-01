@@ -84,7 +84,7 @@ const PersonalInformation = () => {
       <Toaster richColors />
       <div className='mt-[100px] lg:ml-32 bg-white w-10/12 lg:w-8/12 h-1/4 rounded-2xl flex flex-row items-center justify-between shadow'>
         <div className='flex flex-row items-center justify-between w-2/5 h-full'>
-        <img src={`http://127.0.0.1:8000/${userInfo?.User_image}`} className='lg:w-[120px] w-24 h-24 m-2 lg:m-4 mr-4 lg:ml-10 lg:h-[120px]' />
+        <img src={`${userInfo?.User_image}`} className='lg:w-[120px] w-24 h-24 m-2 lg:m-4 mr-4 lg:ml-10 lg:h-[120px]' />
           <div className='flex flex-col items-center justify-center'>
           <h2 className='mb-3 text-lg font-bold lg:text-2xl break-before-all font-body'>Saberben Hamda</h2>
           <h4 className='mb-2 text-sm lg:text-base font-body'>Web Developer</h4>

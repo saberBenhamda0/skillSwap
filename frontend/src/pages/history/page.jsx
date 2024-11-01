@@ -58,7 +58,7 @@ const History = () => {
     return (
       clicked[index] && (
         <div key={index} className='m-6 flex flex-row items-center w-11/12 justify-between border-solid border-2 h-[120px] rounded-xl'> 
-          <img src={`http://127.0.0.1:8000${User_image}`} className='w-10 h-10 ml-4 lg:ml-8 lg:w-14 lg:h-14' alt="User" />
+          <img src={`${User_image}`} className='w-10 h-10 ml-4 lg:ml-8 lg:w-14 lg:h-14' alt="User" />
           <div className='flex flex-col items-center justify-center lg:-ml-36 '>
             <h2 
               onClick={() => navigate(`/profile/${id}`)}
