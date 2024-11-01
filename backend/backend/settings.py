@@ -92,8 +92,6 @@ DATABASES = {
     }
 }
 
-DEFAULT_FILE_STORAGE = "storages.backends.s3boto3.S3Boto3Storage"
-
 
 
 # Password validation
@@ -215,6 +213,17 @@ SIMPLE_JWT = {
 }
 
 
+storage = { 
+    # Media file (image) management
+    "default": {
+        "BACKEND": "storages.backends.s3boto3.S3StaticStorage",
+    },
+    #CSS and JS file management
+
+    "staticfiles": {
+        "BACKEND": "storages.backends.s3boto3.S3StaticStorage",
+    },
+}
 
 
 # Actual directory user files go to
@@ -237,7 +246,6 @@ AWS_S3_OBJECT_PARAMETERS = {'CacheControl': 'max-age=86400'}
 AWS_LOCATION = 'static'
 MEDIA_URL = f'https://{AWS_S3_CUSTOM_DOMAIN}/media/'
 AWS_S3_SIGNATURE_VERSION = "s3v4"
-STATICFILES_STORAGE = "storages.backends.s3boto3.S3Boto3Storage"
 
 AWS_S3_FILE_OVERWRITE = False
 AWS_DEFAULT_ACL = None
