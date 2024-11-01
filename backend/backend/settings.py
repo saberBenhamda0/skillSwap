@@ -214,13 +214,14 @@ SIMPLE_JWT = {
 }
 
 
-storage = { 
-    # Media file (image) management
+STORAGES = {
+
+    # Media file (image) management   
     "default": {
         "BACKEND": "storages.backends.s3boto3.S3StaticStorage",
     },
-    #CSS and JS file management
-
+    
+    # CSS and JS file management
     "staticfiles": {
         "BACKEND": "storages.backends.s3boto3.S3StaticStorage",
     },
