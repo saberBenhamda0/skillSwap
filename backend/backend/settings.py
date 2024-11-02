@@ -166,7 +166,8 @@ REST_FRAMEWORK = {
 CORS_ALLOWED_ORIGINS = [
     'http://localhost:8080',
     'http://127.0.0.1:8080',
-    'http://myappsfrontends.s3-website-us-east-1.amazonaws.com'
+    'http://myappsfrontends.s3-website-us-east-1.amazonaws.com',
+    'http://localhost:5173/'
 ]
 
 # simple jwt configuration from the official docs
@@ -245,7 +246,7 @@ AWS_STORAGE_BUCKET_NAME = env('AWS_STORAGE_BUCKET_NAME')
 AWS_S3_CUSTOM_DOMAIN = f'{AWS_STORAGE_BUCKET_NAME}.s3.us-east-1.amazonaws.com'
 AWS_S3_OBJECT_PARAMETERS = {'CacheControl': 'max-age=86400'}
 # s3 static settings
-AWS_LOCATION = 'static'
+AWS_LOCATION = 'media'
 MEDIA_URL = f'https://{AWS_S3_CUSTOM_DOMAIN}/media/'
 AWS_S3_SIGNATURE_VERSION = "s3v4"
 

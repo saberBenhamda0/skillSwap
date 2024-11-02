@@ -5,7 +5,7 @@ from .models import CustomUser, Post, Friend_request, Friends, ChartData
 class CustomUserAdmin(UserAdmin):
     fieldsets = (
         (None, {'fields': ('email', 'password')}),
-        ('Personal Info', {'fields': ('first_name', 'username','last_name', 'bio', 'phone_number', 'country', 'region', 'city', 'Neighborhood', 'pastCollaboration')}),
+        ('Personal Info', {'fields': ('first_name', 'username','last_name', 'bio', 'phone_number', 'country', 'region', 'city', 'Neighborhood', 'pastCollaboration', 'User_image')}),
         ('Permissions', {'fields': ('is_staff', 'is_active')}),
     )
     add_fieldsets = (
