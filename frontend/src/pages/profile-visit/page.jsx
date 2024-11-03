@@ -59,8 +59,6 @@ const ProfileVisitor = () => {
                         </div>
                 </div>
             </div>
-            <div className='flex flex-col items-center justify-center w-full h-12 mt-4 mb-6 bg-red-500 '>
-            </div>
         </div>
     </div>
     

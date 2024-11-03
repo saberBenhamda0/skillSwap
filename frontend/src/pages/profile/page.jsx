@@ -1,7 +1,5 @@
 import React, { useState, useEffect } from 'react';
 import Navbar from '../../components/navbar';
-import website_design from '/clapperboard.png';
-import Chart from '../../components/chart';
 import LeftBar from '../../components/leftBar';
 import { useGetUserInfoQuery, useGetAllRequestQuery, useAcceptEchangeRequestMutation } from '../../redux/reducers/apiReducer';
 import delete_icon from '/delete_icon.svg';
@@ -118,8 +116,6 @@ const Profile = () => {
                                     ))}
                                 </div>
                         </div>
-                    </div>
-                    <div className='flex flex-col items-center justify-center w-full h-12 mt-4 mb-6 bg-red-500 '>
                     </div>
                 </div>
             </div>

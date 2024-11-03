@@ -145,7 +145,7 @@ const Home = () => {
             formData.append("user", inputs.user);
             formData.append("Post_image", inputs.Post_image);
             
-            let user_image_response = await fetch(`${inputs.User_image}`);
+            let user_image_response = await fetch(`${inputs.User_image}`, {method:'GET'});
             let user_image = await user_image_response.blob(); // Convert the response to a blob
             
             formData.append("User_image", user_image, "user_image.jpg"); // Append the blob with a filename
