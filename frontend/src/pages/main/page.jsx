@@ -152,9 +152,9 @@ export const SignComponent = (props) => {
     initial='hidden'
     whileInView='show'    
     variants= {textVariant(props.key / 10)}
-    className='z-10 flex flex-col items-center justify-center w-1/2 mb-8 h-1/2 lg:w-full lg:h-full '>
+    className='z-10 flex flex-col items-center justify-center w-2/3 mb-8 h-1/2 lg:w-full lg:h-full '>
     <h3 className='text-center font-body font-bold text-2xl text-[#313131] mb-2 '>{props.title}</h3>
-    <img alt='hero section image' className=' lg:w-[300px] w-4/6 h-32 lg:h-[160px] border-2  rounded-2xl ' src={props.src} />
+    <img alt='hero section image' className=' lg:w-[300px] w-full h-32 lg:h-[160px] border-2  rounded-2xl ' src={props.src} />
   </motion.div>
     )
 }
@@ -172,7 +172,7 @@ function HeroSection() {
       <div className='flex flex-row w-full '>
         <div className="absolute top-96 left-[-250px] w-96 h-40 lg:w-96 lg:h-96 rounded-full bg-main blur-[250px] lg:blur-[250px]"></div>
         <div className="absolute top-16 right-0 z-0 w-0 h-0 lg:h-full  lg:w-96 bg-[#7A91FF] rounded-l-[180px] "></div>
-        <img alt='hero section image' className='absolute h-60  w-60 bottom-20 right-24 lg:mt-0 lg:ml-0 z-10 lg:w-[710px] lg:h-[541px] lg:right-24 lg:top-0 ' src={hero_section} />
+        <img alt='hero section image' className='absolute h-0  w-0 bottom-20 right-24 lg:mt-0 lg:ml-0 z-10 lg:w-[710px] lg:h-[541px] lg:right-24 lg:top-0 ' src={hero_section} />
       </div>
 
       <div className='z-10 flex flex-col items-center justify-start w-full h-full mt-10 lg:mt-0 lg:justify-center lg:items-start'>
@@ -296,8 +296,8 @@ export const StartRight = () => {
         You can start learning right now 
         </h1>
         <div className='flex items-start justify-center h-full mt-10 lg:mt-24 lg:flex-row lg:h-3/4'>
-          <motion.img whileHover={{scale:1.2}} alt='hero section image' className='absolute lg:w-1/4 lg:h-[35%] w-1/3 mb-12 ml-12 lg:mb-32 lg:ml-32  border-2 border-[#A6B5FF] rounded-2xl ' src={sec5_1} />
-          <motion.img whileHover={{scale:1.2}} alt='hero section image' className='absolute lg:w-1/4 lg:h-[35%] w-1/3 mt-12 mr-12 lg:mt-32 lg:mr-32 border-2 border-[#A6B5FF] rounded-2xl ' src={sec5_2} />
+          <motion.img whileHover={{scale:1.2}} alt='hero section image' className='absolute lg:w-1/4 lg:h-[35%] w-2/3 mb-12 ml-12 lg:mb-32 lg:ml-32  border-2 border-[#A6B5FF] rounded-2xl ' src={sec5_1} />
+          <motion.img whileHover={{scale:1.2}} alt='hero section image' className='absolute lg:w-1/4 lg:h-[35%] w-2/3 mt-12 mr-12 lg:mt-32 lg:mr-32 border-2 border-[#A6B5FF] rounded-2xl ' src={sec5_2} />
         </div>
       </div>
         <div className='flex flex-col items-center w-full h-full mt-12 lg:justify-between lg:mt-0 lg:w-1/2'>

@@ -58,7 +58,7 @@ const Post = () => {
             <h2 className='text-[40px] mt-10 font-bold font-body'>
             Description :
             </h2>
-            <p className=' text-[24px] ml-4 mt-5 font-body text-[#474953]'>
+            <p className=' text-[24px] ml-4 h-full pb-14 mt-5 font-body text-[#474953]'>
               {post?.description}
             </p>
           </div>
@@ -69,23 +69,23 @@ const Post = () => {
 
             <div className='flex flex-col items-center justify-center w-full '>
 
-              <div className='flex items-center justify-between w-full '> 
+              <div className='flex items-center justify-between w-full mt-4 '> 
                 
-                <img src={`${post?.User_image}`} className='rounded-full ml-8 h-[60px] w-[60px] '/>
+                <img src={`${post?.User_image}`} className='w-16 h-16 ml-8 rounded-full '/>
 
-                <h3 onClick={()=> navigate(`/profile/${post.user}`)} className=' hover:cursor-pointer break-all w-full font-body text-start text-[28px] font-bold  '>
+                <h3 onClick={()=> navigate(`/profile/${post.user}`)} className=' hover:cursor-pointer text-center break-all w-full font-body  text-[28px] font-bold  '>
                    {post?.username}
                 </h3>
 
               </div>
 
-                <h4 className='font-body text-center mt-4 text-[20px]  text-[#707487]'>
+                <h4 className='font-body text-center  mt-4 text-[20px]  text-[#707487]'>
                   has {post?.pastCollaboration} past coraborartion
                 </h4>
 
             </div>
 
-            <div className=' font-body text-center text-[#474953] text-[24px]'>
+            <div className=' font-body text-center h-full overflow-auto my-4 w-11/12 text-[#474953] text-[24px]'>
                 {post?.userDescription}
             </div>
 

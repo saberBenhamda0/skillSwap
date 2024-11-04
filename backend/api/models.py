@@ -72,14 +72,14 @@ class ChartData(models.Model):
 
 class Post(models.Model):
     user = models.ForeignKey(CustomUser, on_delete=models.CASCADE)
-    username = models.CharField(blank=False,default="username", max_length=70, unique=False)
+    username = models.ForeignKey(CustomUser, on_delete=models.CASCADE)
     description = models.TextField(max_length=1000, blank=True,null=True)
-    userDescription = models.TextField(max_length=1000, blank=True,null=True)
+    userDescription = models.ForeignKey(CustomUser, on_delete=models.CASCADE)
     type = models.CharField(blank=True,null=True, max_length=50)
-    pastCollaboration = models.IntegerField(default=0)
+    pastCollaboration = models.ForeignKey(CustomUser, on_delete=models.CASCADE)
     price = models.IntegerField(default=0)
     Post_image = models.ImageField(blank=False,default="How-to-Setup-ReactJS-with-Django_Jf3oK5G.png",null=False)
-    User_image = models.ImageField(blank=False,default="How-to-Setup-ReactJS-with-Django_Jf3oK5G.png",null=False)
+    User_image = models.ForeignKey(CustomUser, on_delete=models.CASCADE)
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
 

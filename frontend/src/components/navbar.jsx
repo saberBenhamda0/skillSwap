@@ -81,7 +81,7 @@ const Navbar =  ()  => {
       <div  onClick={()=> setClickToggleMenuForMobile(!clicktoggleMenuforMobile)} className='relative flex flex-col-reverse items-end justify-center w-full h-full mr-10 lg:hidden '>
         <img  src={setting} className='w-6 h-6 cursor-pointer '/>
         { clicktoggleMenuforMobile &&
-        <div className='absolute z-20 flex flex-col items-center justify-center w-3/12 h-40 text-center min-w-40 -bottom-36 right-10'>
+        <div className='absolute z-20 flex flex-col items-center justify-center w-3/12 text-center h-28 min-w-40 -bottom-20 right-6'>
           {ACCESS_TOKEN
            ?
            <motion.div 
@@ -89,7 +89,7 @@ const Navbar =  ()  => {
           animate={{scale:1}}
           exit={{scale:0}}
            className='flex flex-col items-center justify-center w-full h-full border-solid opacity-70 bg-main rounded-2xl '>
-            <h3 onClick={()=>navigate("/profile")} className='text-lg font-bold text-white cursor-pointer font-body'>
+            <h3 onClick={()=>navigate("/profile")} className='mb-2 text-lg font-bold text-white cursor-pointer font-body'>
                 profile
             </h3>
             <h3 
@@ -106,7 +106,7 @@ const Navbar =  ()  => {
            </motion.div>
            : 
            <div className='flex flex-col items-center justify-center w-full h-full border-solid opacity-70 bg-main rounded-2xl '>
-            <h3 onClick={()=>navigate("/login")} className='text-lg font-bold text-white cursor-pointer font-body'>
+            <h3 onClick={()=>navigate("/login")} className='mb-2 text-lg font-bold text-white cursor-pointer font-body'>
               login
           </h3>
           <h3
